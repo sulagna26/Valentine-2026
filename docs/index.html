@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Valentine's Day ❤️</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+    	    background: linear-gradient(135deg, #160e3e 0%, #942f2f 100%);
+            min-height: 100vh;
+    	    display: flex;
+   	    justify-content: center;
+  	    align-items: center;
+    overflow: hidden;
+        }
+
+        /* Popup Overlay */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgb(11 19 37 / 80%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .popup-overlay.hidden {
+            display: none;
+        }
+
+        .popup {
+            background: #3b244c85;
+    	    padding: 40px;
+    	    border: 2px solid #665b964d;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 500px;
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.3);
+            animation: popupAppear 0.5s ease-in;
+        }
+
+        .popup h2 {
+            color: #e74c3c;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+      	    font-style: oblique;
+        }
+
+        .popup-heart {
+            font-size: 5em;
+            margin: 20px 0;
+            animation: heartbeat 1.5s infinite;
+        }
+
+        .button-container {
+            margin-top: 30px;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .yes-btn, .no-btn {
+            padding: 15px 40px;
+            font-size: 1.2em;
+            border: border: 2px solid #1116d7;;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: transform 0.2s;
+        }
+
+        .yes-btn {
+            background: #4de73c;
+            color: #1116d7;
+        }
+
+        .yes-btn:hover {
+            transform: scale(1.1);
+            background: #09f0e2;
+        }
+
+        .no-btn {
+            background: #ff4f4ff7;
+            color: #1116d7;
+            position: relative;
+        }
+
+        /* Main Content */
+        .container {
+            text-align: center;
+            color: white;
+            padding: 20px;
+            z-index: 10;
+        }
+
+        .container.hidden {
+            display: none;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            animation: fadeInDown 1s ease-in;
+        }
+
+        .heart {
+            font-size: 5em;
+            animation: heartbeat 1.5s infinite;
+            display: inline-block;
+        }
+
+        .message {
+            font-size: 2em;
+            margin: 30px 0;
+	    font-style: oblique;
+    	    font-weight: bold;
+            animation: fadeIn 2s ease-in;
+        }
+
+        .couple-photo {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            margin: 20px auto;
+            animation: slideUp 1.5s ease-in;
+        }
+
+        .love-note {
+            background: rgb(59 23 73 / 69%);
+	    border: 2px solid #403955;
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            margin: 20px auto;
+            max-width: 600px;
+            animation: slideUp 1.5s ease-in;
+        }
+
+        /* Floating hearts animation */
+        .floating-heart {
+            position: fixed;
+            font-size: 2em;
+            animation: float 6s infinite;
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.2); }
+            50% { transform: scale(1); }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes popupAppear {
+            from {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2em; }
+            .message { font-size: 1.2em; }
+            .heart { font-size: 3em; }
+            .popup { padding: 20px; max-width: 90%; }
+            .popup h2 { font-size: 1.8em; }
+            .couple-photo { width: 200px; height: 200px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Popup -->
+    <div class="popup-overlay" id="popupOverlay">
+        <div class="popup">
+            <h2>Will You Be My Valentine?</h2>
+            <div class="popup-heart">💕</div>
+            <div class="button-container">
+                <button class="yes-btn" id="yesBtn">Yes! ❤️</button>
+                <button class="no-btn" id="noBtn">No</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content (Hidden Initially) -->
+    <div class="container hidden" id="mainContent">
+        <h1>Happy Valentine's Day!</h1>
+        <div class="heart">❤️</div>
+        <div class="message">
+            To My Amazing Husband
+        </div>
+        
+        <!-- Add your photo here -->
+        <img src="C:\Users\USGP\OneDrive - Novo Nordisk\USGP_NEW\Personal\Image.jpg" alt="Us Together" class="couple-photo" id="couplePhoto">
+        
+        <div class="love-note">
+            <p style="margin-bottom: 15px;">
+                Everyday with you is a blessing.
+            </p>
+            <p style="margin-bottom: 15px;">
+                Thank you for being my partner, my best friend, and my love.
+            </p>
+            <p>
+                I love you more than I can express! ❤️
+            </p>
+        </div>
+    </div>
+
+    <script>
+        const yesBtn = document.getElementById('yesBtn');
+        const noBtn = document.getElementById('noBtn');
+        const popupOverlay = document.getElementById('popupOverlay');
+        const mainContent = document.getElementById('mainContent');
+
+        // Yes button click
+        yesBtn.addEventListener('click', () => {
+            popupOverlay.classList.add('hidden');
+            mainContent.classList.remove('hidden');
+            createCelebrationHearts();
+        });
+
+        // No button - move away on hover
+        noBtn.addEventListener('mouseenter', moveButton);
+        noBtn.addEventListener('touchstart', moveButton);
+
+        function moveButton() {
+            const popup = document.querySelector('.popup');
+            const popupRect = popup.getBoundingClientRect();
+            
+            // Calculate random position within popup bounds
+            const maxX = popupRect.width - noBtn.offsetWidth - 40;
+            const maxY = popupRect.height - noBtn.offsetHeight - 40;
+            
+            const randomX = Math.random() * maxX;
+            const randomY = Math.random() * maxY;
+            
+            noBtn.style.position = 'absolute';
+            noBtn.style.left = randomX + 'px';
+            noBtn.style.top = randomY + 'px';
+            noBtn.style.transition = 'all 0.3s ease';
+        }
+
+        // Create celebration hearts when Yes is clicked
+        function createCelebrationHearts() {
+            for(let i = 0; i < 20; i++) {
+                setTimeout(createFloatingHeart, i * 100);
+            }
+        }
+
+        // Create floating hearts
+        function createFloatingHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'floating-heart';
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDelay = Math.random() * 5 + 's';
+            heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
+            document.body.appendChild(heart);
+
+            // Remove heart after animation
+            setTimeout(() => {
+                heart.remove();
+            }, 10000);
+        }
+
+        // Create floating hearts continuously after Yes is clicked
+        let heartInterval;
+        yesBtn.addEventListener('click', () => {
+            heartInterval = setInterval(createFloatingHeart, 800);
+        });
+      
+        function sendValentineEmail() {
+            const websiteUrl = "YOUR_WEBSITE_URL_HERE"; // Replace with your hosted URL
+            const subject = "Happy Valentine's Day, My Love! ❤️";
+            const body = `Happy Valentine's Day, my amazing husband!\n\nI made something special for you. Click here to see it:\n${websiteUrl}\n\nWith all my love,\nYour Wife ❤️`;
+            
+            window.location.href = `mailto:patnaiksulagna@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        }
+    </script>
+</body>
+</html>

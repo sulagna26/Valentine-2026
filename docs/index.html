@@ -10,17 +10,16 @@
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
             font-family: 'Arial', sans-serif;
-    	    background: linear-gradient(135deg, #160e3e 0%, #942f2f 100%);
+            background: linear-gradient(135deg, #160e3e 0%, #942f2f 100%);
             min-height: 100vh;
-    	    display: flex;
-   	    justify-content: center;
-  	    align-items: center;
-    overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            overflow-y: auto;
         }
-
         /* Popup Overlay */
         .popup-overlay {
             position: fixed;
@@ -34,143 +33,130 @@
             align-items: center;
             z-index: 1000;
         }
-
         .popup-overlay.hidden {
             display: none;
         }
-
         .popup {
             background: #3b244c85;
-    	    padding: 40px;
-    	    border: 2px solid #665b964d;
+            padding: 40px;
+            border: 2px solid #665b964d;
             border-radius: 20px;
             text-align: center;
             max-width: 500px;
             box-shadow: 0 10px 50px rgba(0, 0, 0, 0.3);
             animation: popupAppear 0.5s ease-in;
         }
-
         .popup h2 {
             color: #e74c3c;
             font-size: 2.5em;
             margin-bottom: 20px;
-      	    font-style: oblique;
+            font-style: oblique;
         }
-
         .popup-heart {
             font-size: 5em;
             margin: 20px 0;
             animation: heartbeat 1.5s infinite;
         }
-
         .button-container {
             margin-top: 30px;
             display: flex;
             gap: 20px;
             justify-content: center;
         }
-
         .yes-btn, .no-btn {
             padding: 15px 40px;
             font-size: 1.2em;
-            border: border: 2px solid #1116d7;;
+            border: 2px solid #1116d7;
             border-radius: 10px;
             cursor: pointer;
             font-weight: bold;
             transition: transform 0.2s;
         }
-
         .yes-btn {
             background: #4de73c;
             color: #1116d7;
         }
-
         .yes-btn:hover {
             transform: scale(1.1);
             background: #09f0e2;
         }
-
         .no-btn {
             background: #ff4f4ff7;
             color: #1116d7;
             position: relative;
         }
-
         /* Main Content */
-       .container {
-    text-align: center;
-    color: white;
-    padding: 20px;
-    z-index: 10;
-}
-
+        .container {
+            text-align: center;
+            color: white;
+            padding: 40px 20px;
+            z-index: 10;
+            width: 100%;
+        }
         .container.hidden {
             display: none;
         }
-
         h1 {
             font-size: 3em;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             animation: fadeInDown 1s ease-in;
         }
-
         .heart {
-            font-size: 5em;
+            font-size: 4em;
             animation: heartbeat 1.5s infinite;
             display: inline-block;
+            margin-bottom: 10px;
         }
-
         .message {
-            font-size: 2em;
-            margin: 30px 0;
-	    font-style: oblique;
-    	    font-weight: bold;
+            font-size: 1.8em;
+            margin: 15px 0;
+            font-style: oblique;
+            font-weight: bold;
             animation: fadeIn 2s ease-in;
         }
-
         .couple-photo {
-            width: 300px;
-            height: 300px;
+            width: 250px;
+            height: 250px;
             border-radius: 50%;
             object-fit: cover;
             border: 5px solid white;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            margin: 20px auto;
+            margin: 15px auto;
             animation: slideUp 1.5s ease-in;
         }
-
-       .love-note {
-    background: rgb(59 23 73 / 69%);
-    border: 2px solid #403955;
-    padding: 30px;
-    border-radius: 15px;
-    backdrop-filter: blur(10px);
-    margin: 20px auto;
-    max-width: 600px;
-    max-height: 400px; /* Add this */
-    overflow-y: auto; /* Add this */
-    animation: slideUp 1.5s ease-in;
-}
-
-/* Add custom scrollbar styling */
-.love-note::-webkit-scrollbar {
-    width: 8px;
-}
-
-.love-note::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-}
-
-.love-note::-webkit-scrollbar-thumb {
-    background: #e74c3c;
-    border-radius: 10px;
-}
-
-.love-note::-webkit-scrollbar-thumb:hover {
-    background: #c0392b;
-}
-
+        .love-note {
+            background: rgb(59 23 73 / 69%);
+            border: 2px solid #403955;
+            padding: 25px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            margin: 15px auto;
+            max-width: 600px;
+            max-height: 350px;
+            overflow-y: auto;
+            animation: slideUp 1.5s ease-in;
+            line-height: 1.6;
+            text-align: left;
+        }
+        .love-note p {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+        }
+        /* Custom scrollbar styling */
+        .love-note::-webkit-scrollbar {
+            width: 8px;
+        }
+        .love-note::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+        .love-note::-webkit-scrollbar-thumb {
+            background: #e74c3c;
+            border-radius: 10px;
+        }
+        .love-note::-webkit-scrollbar-thumb:hover {
+            background: #c0392b;
+        }
         /* Floating hearts animation */
         .floating-heart {
             position: fixed;
@@ -179,13 +165,11 @@
             opacity: 0.6;
             pointer-events: none;
         }
-
         @keyframes heartbeat {
             0%, 100% { transform: scale(1); }
             25% { transform: scale(1.2); }
             50% { transform: scale(1); }
         }
-
         @keyframes fadeInDown {
             from {
                 opacity: 0;
@@ -196,12 +180,10 @@
                 transform: translateY(0);
             }
         }
-
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
-
         @keyframes slideUp {
             from {
                 opacity: 0;
@@ -212,7 +194,6 @@
                 transform: translateY(0);
             }
         }
-
         @keyframes popupAppear {
             from {
                 opacity: 0;
@@ -223,7 +204,6 @@
                 transform: scale(1);
             }
         }
-
         @keyframes float {
             0% {
                 transform: translateY(100vh) rotate(0deg);
@@ -240,14 +220,19 @@
                 opacity: 0;
             }
         }
-
         @media (max-width: 768px) {
             h1 { font-size: 2em; }
-            .message { font-size: 1.2em; }
+            .message { font-size: 1.3em; }
             .heart { font-size: 3em; }
             .popup { padding: 20px; max-width: 90%; }
             .popup h2 { font-size: 1.8em; }
-            .couple-photo { width: 200px; height: 200px; }
+            .couple-photo { width: 180px; height: 180px; }
+            .love-note { 
+                max-height: 300px; 
+                padding: 20px;
+                font-size: 0.9em;
+            }
+            .container { padding: 20px 15px; }
         }
     </style>
 </head>
@@ -263,7 +248,6 @@
             </div>
         </div>
     </div>
-
     <!-- Main Content (Hidden Initially) -->
     <div class="container hidden" id="mainContent">
         <h1>Happy Valentine's Day!</h1>
@@ -271,70 +255,65 @@
         <div class="message">
             To My Amazing Husband
         </div>
-        
         <!-- Add your photo here -->
         <img src="./Image.jpg" alt="Img" class="couple-photo" id="couplePhoto">
-        
         <div class="love-note">
-			<p style="margin-bottom: 15px;">
-				I still remember the day we first met at "blue birds." Meeting someone from Tinder felt scary and left me feeling vulnerable, but as we started talking, you made everything feel so comfortable. Our first date—a long drive and trying hookah together—was the beginning of something special.
-It was with you that I made one of the biggest decisions of my life: to get married. From fighting for our marriage to the silly arguments we still have, our journey has truly been a roller coaster. Through it all, I am overwhelmed with gratitude and joy knowing you’ve always been by my side.
-From the day at Sanoj's chai stall, I started falling for you—and every single day since, I continue to fall for you. You are both my greatest strength and my weakness. I can’t imagine my life without you. The transition from sleeping alone to sleeping next to you has made it even harder when you’re not beside me.
-I love you so much, my ponku. I promise to love you and annoy you for the rest of my life. Thank you for everything—for making me stronger, for making me feel beautiful, and for always being there. Te Amo.
-			</p>
-            <p style="margin-bottom: 15px;">
-                Everyday with you is a blessing.
+            <p>
+                I still remember the day we first met at "blue birds." Meeting someone from Tinder felt scary and left me feeling vulnerable, but as we started talking, you made everything feel so comfortable. Our first date—a long drive and trying hookah together—was the beginning of something special.❤️
             </p>
-            <p style="margin-bottom: 15px;">
-                Thank you for being my partner, my best friend, and my love.
+            <p>
+                It was with you that I made one of the biggest decisions of my life: to get married. From fighting for our marriage to the silly arguments we still have, our journey has truly been a roller coaster. Through it all, I am overwhelmed with gratitude and joy knowing you've always been by my side.❤️
+            </p>
+            <p>
+                From the day at Sanoj's chai stall, I started falling for you—and every single day since, I continue to fall for you. You are both my greatest strength and my weakness. I can't imagine my life without you. The transition from sleeping alone to sleeping next to you has made it even harder when you're not beside me.❤️
+            </p>
+            <p>
+                I love you so much, my ponku. I promise to love you and annoy you for the rest of my life. Thank you for everything—for making me stronger, for making me feel beautiful, and for always being there. Te Amo.❤️
+            </p>
+            <p>
+                Everyday with you is a blessing.❤️
+            </p>
+            <p>
+                Thank you for being my partner, my best friend, and my love.❤️
             </p>
             <p>
                 I love you more than I can express! ❤️
             </p>
         </div>
     </div>
-
     <script>
         const yesBtn = document.getElementById('yesBtn');
         const noBtn = document.getElementById('noBtn');
         const popupOverlay = document.getElementById('popupOverlay');
         const mainContent = document.getElementById('mainContent');
-
         // Yes button click
         yesBtn.addEventListener('click', () => {
             popupOverlay.classList.add('hidden');
             mainContent.classList.remove('hidden');
             createCelebrationHearts();
         });
-
         // No button - move away on hover
         noBtn.addEventListener('mouseenter', moveButton);
         noBtn.addEventListener('touchstart', moveButton);
-
         function moveButton() {
             const popup = document.querySelector('.popup');
             const popupRect = popup.getBoundingClientRect();
-            
             // Calculate random position within popup bounds
             const maxX = popupRect.width - noBtn.offsetWidth - 40;
             const maxY = popupRect.height - noBtn.offsetHeight - 40;
-            
             const randomX = Math.random() * maxX;
             const randomY = Math.random() * maxY;
-            
             noBtn.style.position = 'absolute';
             noBtn.style.left = randomX + 'px';
             noBtn.style.top = randomY + 'px';
             noBtn.style.transition = 'all 0.3s ease';
         }
-
         // Create celebration hearts when Yes is clicked
         function createCelebrationHearts() {
             for(let i = 0; i < 20; i++) {
                 setTimeout(createFloatingHeart, i * 100);
             }
         }
-
         // Create floating hearts
         function createFloatingHeart() {
             const heart = document.createElement('div');
@@ -344,24 +323,20 @@ I love you so much, my ponku. I promise to love you and annoy you for the rest o
             heart.style.animationDelay = Math.random() * 5 + 's';
             heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
             document.body.appendChild(heart);
-
             // Remove heart after animation
             setTimeout(() => {
                 heart.remove();
             }, 10000);
         }
-
         // Create floating hearts continuously after Yes is clicked
         let heartInterval;
         yesBtn.addEventListener('click', () => {
             heartInterval = setInterval(createFloatingHeart, 800);
         });
-      
         function sendValentineEmail() {
-            const websiteUrl = "https://sulagna26.github.io/Valentine-2026/"; // Replace with your hosted URL
+            const websiteUrl = "https://sulagna26.github.io/Valentine-2026/";
             const subject = "Happy Valentine's Day, My Love! ❤️";
             const body = `Happy Valentine's Day, my amazing husband!\n\nI made something special for you. Click here to see it:\n${websiteUrl}\n\nWith all my love,\nYour Wife ❤️`;
-            
             window.location.href = `mailto:patnaiksulagna@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
         }
     </script>

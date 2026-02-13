@@ -97,12 +97,14 @@
         }
 
         /* Main Content */
-        .container {
-            text-align: center;
-            color: white;
-            padding: 20px;
-            z-index: 10;
-        }
+       .container {
+    text-align: center;
+    color: white;
+    padding: 20px;
+    z-index: 10;
+    max-height: 100vh; /* Add this */
+    overflow-y: auto; /* Add this */
+}
 
         .container.hidden {
             display: none;
@@ -139,16 +141,37 @@
             animation: slideUp 1.5s ease-in;
         }
 
-        .love-note {
-            background: rgb(59 23 73 / 69%);
-	    border: 2px solid #403955;
-            padding: 30px;
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-            margin: 20px auto;
-            max-width: 600px;
-            animation: slideUp 1.5s ease-in;
-        }
+       .love-note {
+    background: rgb(59 23 73 / 69%);
+    border: 2px solid #403955;
+    padding: 30px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    margin: 20px auto;
+    max-width: 600px;
+    max-height: 400px; /* Add this */
+    overflow-y: auto; /* Add this */
+    animation: slideUp 1.5s ease-in;
+}
+
+/* Add custom scrollbar styling */
+.love-note::-webkit-scrollbar {
+    width: 8px;
+}
+
+.love-note::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.love-note::-webkit-scrollbar-thumb {
+    background: #e74c3c;
+    border-radius: 10px;
+}
+
+.love-note::-webkit-scrollbar-thumb:hover {
+    background: #c0392b;
+}
 
         /* Floating hearts animation */
         .floating-heart {
@@ -255,7 +278,7 @@
         <img src="./Image.jpg" alt="Img" class="couple-photo" id="couplePhoto">
         
         <div class="love-note">
-			<p tyle="margin-bottom: 15px;">
+			<p style="margin-bottom: 15px;">
 				I still remember the day we first met at "blue birds." Meeting someone from Tinder felt scary and left me feeling vulnerable, but as we started talking, you made everything feel so comfortable. Our first date—a long drive and trying hookah together—was the beginning of something special.
 It was with you that I made one of the biggest decisions of my life: to get married. From fighting for our marriage to the silly arguments we still have, our journey has truly been a roller coaster. Through it all, I am overwhelmed with gratitude and joy knowing you’ve always been by my side.
 From the day at Sanoj's chai stall, I started falling for you—and every single day since, I continue to fall for you. You are both my greatest strength and my weakness. I can’t imagine my life without you. The transition from sleeping alone to sleeping next to you has made it even harder when you’re not beside me.
